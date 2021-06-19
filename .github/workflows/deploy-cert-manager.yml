@@ -1,0 +1,27 @@
+name: Deploy cert-manager
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Deploy
+        use: deliverybot/helm@v1
+        with:
+          release: cert-manager
+          namespace: ingress-basic
+          repository: https://charts.jetstack.io
+          chart: cert-manager
+          helm: helm3
+          value: |
+            installCRDs: true
+            nodeSelector."kubernetes\.io/os": linux
+            webhook.nodeSelector."kubernetes\.io/os": linux
+            cainjector.nodeSelector."kubernetes\.io/os": linux
+        env:
+          KUBECONFIG_FILE: ${{ secrets.KUBECONFIG }}
