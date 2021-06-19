@@ -1,0 +1,25 @@
+name: Deploy Ingress Controller
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Deploy
+        uses: deliverybot/helm@v1
+        with:
+          release: nginx-ingress
+          namespace: ingress-baisc
+          repository: https://kubernetes.github.io/ingress-nginx
+          values: |
+            controller.replicaCount: 2
+            controller.nodeSelector."beta\.kubernetes\.io/os": linux
+            defaultBackend.nodeSelector."beta\.kubernetes\.io/os": linux
+            controller.admissionWebhooks.patch.nodeSelector."beta\.kubernetes\.io/os": linux
+        env:
+          KUBECONFIG_FILE: ${{ secrets.KUBECONFIG }}
