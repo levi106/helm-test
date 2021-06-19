@@ -17,6 +17,7 @@ jobs:
           namespace: ingress-baisc
           repository: https://kubernetes.github.io/ingress-nginx
           chart: ingress-nginx/ingress-nginx
+          helm: helm3
           values: |
             controller.replicaCount: 2
             controller.nodeSelector."beta\.kubernetes\.io/os": linux
