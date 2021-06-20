@@ -1,0 +1,26 @@
+name: Deploy cluster-issuer
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Deploy
+        uses: deliverybot/helm@v1
+        with:
+          releases: ca-issuer
+          namespace: clusterissuer
+          chart: clusterissuer
+          token: ${{ github.token }}
+          helm: helm3
+          values: |
+            tls.crt: ${{ secrets.issuer_tls_crt }}
+            tls.key: ${{ secrets.issuer_tls_key }}
+            ca.crt: ${{ secrets.issuer_ca_crt }}
+        env:
+          KUBECONFIG_FILE: ${{ secrets.KUBECONFIG }}
