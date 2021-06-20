@@ -14,7 +14,7 @@ jobs:
         uses: deliverybot/helm@v1
         with:
           release: test-cluster-issuer
-          namespace: clusterissuer
+          namespace: cert-manager
           chart: clusterissuer
           token: ${{ github.token }}
           helm: helm3
