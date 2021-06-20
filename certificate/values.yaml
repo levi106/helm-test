@@ -1,0 +1,4 @@
+certName: test-cert-1
+secretName: test-secret-1
+dnsName: ""
+issuerName: test-issuer-1
