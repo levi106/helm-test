@@ -7,18 +7,18 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
-  steps:
-    - uses: actions/checkout@v2
+    steps:
+      - uses: actions/checkout@v2
 
-    - name: Deploy
-      uses: deliverybot/helm@v1
-      with:
-        release: test-certificate
-        namespace: testcert
-        chart: certificate
-        token: ${{ github.token }}
-        helm: helm3
-        values: |
-          dnsName: ${{ secrets. dnsName }}
-      env:
-        KUBECONFIG_FILE: ${{ secrets.KUBECONFIG }}
+      - name: Deploy
+        uses: deliverybot/helm@v1
+        with:
+          release: test-certificate
+          namespace: testcert
+          chart: certificate
+          token: ${{ github.token }}
+          helm: helm3
+          values: |
+            dnsName: ${{ secrets. dnsName }}
+        env:
+          KUBECONFIG_FILE: ${{ secrets.KUBECONFIG }}
