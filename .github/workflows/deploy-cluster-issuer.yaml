@@ -13,7 +13,7 @@ jobs:
       - name: Deploy
         uses: deliverybot/helm@v1
         with:
-          release: ca-issuer
+          release: test-cluster-issuer
           namespace: clusterissuer
           chart: clusterissuer
           token: ${{ github.token }}
