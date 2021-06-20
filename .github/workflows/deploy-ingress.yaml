@@ -1,4 +1,4 @@
-name: Deploy certificate
+name: Deploy Ingress
 
 on:
   workflow_dispatch:
@@ -13,9 +13,9 @@ jobs:
       - name: Deploy
         uses: deliverybot/helm@v1
         with:
-          release: test-certificate
-          namespace: testcert
-          chart: certificate
+          release: nginx
+          namespace: ingress-test
+          chart: ingress
           token: ${{ github.token }}
           helm: helm3
           values: |
