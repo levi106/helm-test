@@ -21,5 +21,6 @@ jobs:
           values: |
             tlsCrt: ${{ secrets.issuer_tls_crt }}
             tlsKey: ${{ secrets.issuer_tls_key }}
+            caCrt: ${{ secrets.issuer_ca_crt }}
         env:
           KUBECONFIG_FILE: ${{ secrets.KUBECONFIG }}

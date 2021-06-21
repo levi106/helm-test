@@ -14,3 +14,4 @@ type: kubernetes.io/tls
 data:
   tls.crt: {{ .Values.tlsCrt }}
   tls.key: {{ .Values.tlsKey }}
+  ca.crt: {{ .Value.caCrt }}
