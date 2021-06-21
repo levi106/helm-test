@@ -6,8 +6,8 @@ metadata:
     kubernetes.io/ingress.class: nginx
     cert-manager.io/cluster-issuer: test-issuer-1
     nginx.ingress.kubernetes.io/rewrite-target: /
-    nginx.ingress.kubernetes.io/auth-tls-verify-client: on
-    nginx.ingress.kubernetes.io/auth-tls-secret: cert-manager/ca-key-pair
+    nginx.ingress.kubernetes.io/auth-tls-verify-client: "on"
+    nginx.ingress.kubernetes.io/auth-tls-secret: "cert-manager/ca-key-pair"
 spec:
   tls:
   - hosts:
